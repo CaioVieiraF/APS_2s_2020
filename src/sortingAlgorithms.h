@@ -65,7 +65,7 @@ void insertionSort(int *vet, int tam){
 
 
 //Algoritmo de ordenacao QuickSort
-void QuickSort(int* v, int tam){
+void quickSort(int* v, int tam){
 	int j = tam, k;
 	if (tam <= 1)
 		return;
@@ -106,14 +106,3 @@ void QuickSort(int* v, int tam){
 	
 }
 
-void quickSort(){
-
-}
-
-void selectionSort(){
-
-}
-
-void bubbleSort(){
-
-}
