@@ -50,6 +50,7 @@ void mergeSort(int list[], int l, int r){
 
 void insertionSort(int *vet, int tam){
     int a, b, c;
+    
     // no Insertion Sort sempre começa na segunda posição do vetor
     for(a = 1; a < tam; a++){
         c = vet[a];
