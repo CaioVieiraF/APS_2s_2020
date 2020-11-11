@@ -1,3 +1,6 @@
+
+// Função merge para jutar dois arrays.
+// Isso é utilizado pelo mergeSort.
 void merge(int arr[], int l, int m, int r) {
     int n1 = m - l + 1;
     int n2 = r - m;
@@ -36,6 +39,7 @@ void merge(int arr[], int l, int m, int r) {
     }
 }
 
+// Algorítmo de ordenação mergeSort
 void mergeSort(int list[], int l, int r){
     if (l < r) {
 
@@ -48,6 +52,7 @@ void mergeSort(int list[], int l, int r){
     }
 }
 
+// Algorítmo insertion sort
 void insertionSort(int *vet, int tam){
     int a, b, c;
 
@@ -64,7 +69,7 @@ void insertionSort(int *vet, int tam){
 }
 
 
-//Algoritmo de ordenacao QuickSort
+// Algoritmo de ordenacao QuickSort
 void quickSort(int* v, int tam){
 	int j = tam, k;
 	if (tam <= 1)

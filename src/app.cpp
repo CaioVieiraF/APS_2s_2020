@@ -48,21 +48,27 @@ const int TAM = 100000;
 // Método principal
 int main(){
 
-    // Teste com lista 100% desordenada
+    // Teste com lista 100% desordenada:
+
+    // Carregando o arquivo
     std::ifstream infoDesordFile("db/arquivo.txt");
     std::cout << "Teste com lista 100% desordenada\n";
+
+    // Rodando o teste
     teste(infoDesordFile);
+
+    // Fechando o arquivo
     infoDesordFile.close();
     std::cout << "================================\n";
 
-    // Teste com lista 50% desordenada
+    // Teste com lista 50% desordenada:
     std::ifstream info50DesordFile("db/arquivo_50.txt");
     std::cout << "Teste com lista 50% desordenada\n";
     teste(info50DesordFile);
     info50DesordFile.close();
     std::cout << "================================\n";
 
-    // Teste com lista 70% desordenada
+    // Teste com lista 70% desordenada:
     std::ifstream info30DesordFile("db/arquivo_30.txt");
     std::cout << "Teste com lista 70% desordenada\n";
     teste(info30DesordFile);
@@ -74,9 +80,12 @@ int main(){
 
 void teste(std::ifstream &infoDesordFile){
 
-    // Declaração do vetor de valores desordenados
+    // Declaração dos vetores de valores desordenados para
+    // cada método de ordenação. Isso é necessário pois quando
+    // um array está ordenado ele não serve mais para os testes.
     int infoDesord_00[TAM], infoDesord_01[TAM], infoDesord_02[TAM];
 
+    // Preenchendo os arrays com os valores do arquivo
     {
         int n, i = 0;
         while(infoDesordFile >> n){
