@@ -50,7 +50,7 @@ void mergeSort(int list[], int l, int r){
 
 void insertionSort(int *vet, int tam){
     int a, b, c;
-    
+
     // no Insertion Sort sempre começa na segunda posição do vetor
     for(a = 1; a < tam; a++){
         c = vet[a];
@@ -86,23 +86,16 @@ void quickSort(int* v, int tam){
 			a++;
 			b--;
 	}
-		for(k = 0; k < j; k++)
-			printf("%d ", v[k]);
-			printf("\n");
 		}while(a <= b);
-	
+
 		// troca pivo
 		v[0] = v[b];
 		v[b] = x;
-		
-		// ordena sub-vetores restantes	
-		QuickSort(v, b);
-		QuickSort(&v[a], tam-a);
-		for(k = 0; k < j; k++)
-		printf("%d ", v[k]);
-		printf("\n");
 
+		// ordena sub-vetores restantes
+		quickSort(v, b);
+		quickSort(&v[a], tam-a);
 	}
-	
+
 }
 
