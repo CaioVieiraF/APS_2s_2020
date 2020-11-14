@@ -1,7 +1,7 @@
 
 // Importação das bibliotecas padrão
 #include <iostream>
-#include <chrono>
+#include <ctime>
 #include <fstream>
 #include <vector>
 
@@ -13,21 +13,21 @@ struct Timer {
 
     // Declaração das variaveis usadas nesse escopo para obter os tempos inicial e
     // final para obter a duração.
-    std::chrono::time_point<std::chrono::high_resolution_clock> start, end;
-    std::chrono::duration<float> duration;
+    clock_t start, end;
+    double duration;
 
     // Método construtor que pega o tempo atual no momento da declaração de um objeto
     Timer(){
-        start = std::chrono::high_resolution_clock::now();
+        start = clock();
     }
 
     // Método desconstrutor que pega o tempo atual no momento da "destruição" do objeto,
     // calcula a duração total da vida do objeto e mostra na tela.
     ~Timer(){
-        end = std::chrono::high_resolution_clock::now();
-        duration = end - start;
+        end = clock();
+        duration = ((double)(end - start)) / CLOCKS_PER_SEC;
 
-        float ms = duration.count() * 1000.0f;
+        float ms = duration * 1000.0f;
         std::cout << "Timer took " << ms << "ms " << std::endl;
     }
 };
