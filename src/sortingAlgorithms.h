@@ -1,6 +1,6 @@
 
-// Fun√ß√£o merge para jutar dois arrays.
-// Isso √© utilizado pelo mergeSort.
+// FunÁ„o merge para jutar dois arrays.
+// Isso utilizado pelo mergeSort.
 void merge(int arr[], int l, int m, int r) {
     int n1 = m - l + 1;
     int n2 = r - m;
@@ -39,7 +39,7 @@ void merge(int arr[], int l, int m, int r) {
     }
 }
 
-// Algor√≠tmo de ordena√ß√£o mergeSort
+// Algori≠tmo de ordenaÁ„o mergeSort
 void mergeSort(int list[], int l, int r){
     if (l < r) {
 
@@ -52,11 +52,11 @@ void mergeSort(int list[], int l, int r){
     }
 }
 
-// Algor√≠tmo insertion sort
+// Algor„≠tmo insertion sort
 void insertionSort(int *vet, int tam){
     int a, b, c;
 
-    // no Insertion Sort sempre come√ßa na segunda posi√ß√£o do vetor
+    // no Insertion Sort sempre comeÁa na segunda posiÁ„o do vetor
     for(a = 1; a < tam; a++){
         c = vet[a];
         b = a - 1;
