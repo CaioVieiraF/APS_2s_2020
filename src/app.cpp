@@ -42,6 +42,7 @@ void teste(std::ifstream &infoDesordFile);
 void testeMerge(int *array);
 void testeInsertion(int *array);
 void testeQuick(int *array);
+void testeSelectionSort(int *array);
 
 const int TAM = 100000;
 
@@ -64,14 +65,18 @@ int main(){
     // Teste com lista 50% desordenada:
     std::ifstream info50DesordFile("db/arquivo_50.txt");
     std::cout << "Teste com lista 50% desordenada\n";
+    
     teste(info50DesordFile);
+    
     info50DesordFile.close();
     std::cout << "================================\n";
 
     // Teste com lista 70% desordenada:
     std::ifstream info30DesordFile("db/arquivo_30.txt");
     std::cout << "Teste com lista 70% desordenada\n";
+    
     teste(info30DesordFile);
+    
     info30DesordFile.close();
     std::cout << "================================\n";
 
@@ -83,7 +88,7 @@ void teste(std::ifstream &infoDesordFile){
     // Declaração dos vetores de valores desordenados para
     // cada método de ordenação. Isso á necessário pois quando
     // um array está ordenado ele não serve mais para os testes.
-    int infoDesord_00[TAM], infoDesord_01[TAM], infoDesord_02[TAM];
+    int infoDesord_00[TAM], infoDesord_01[TAM], infoDesord_02[TAM], infoDesord_03[TAM];
 
     // Preenchendo os arrays com os valores do arquivo
     {
@@ -92,6 +97,7 @@ void teste(std::ifstream &infoDesordFile){
             infoDesord_00[i] = n;
             infoDesord_01[i] = n;
             infoDesord_02[i] = n;
+            infoDesord_03[i] = n;
             i++;
         }
     }
@@ -104,6 +110,9 @@ void teste(std::ifstream &infoDesordFile){
 
     // teste de tempo do insertion sort.
     testeQuick(infoDesord_02);
+    
+    // teste de tempo do selection sort.
+    testeSelectionSort(infoDesord_03);
 
 }
 
@@ -132,6 +141,15 @@ void testeQuick(int *array){
     // Declaração do timer para contar o tempo da função testeSort
     Timer timer;
     quickSort(array, TAM);
+}
+
+// Função de teste do selection sort
+void testeSelectionSort(int *array){
+
+    std::cout << "Selection Sort:\n";
+    // Declaração do timer para contar o tempo da função testeSort
+    Timer timer;
+    selectionSort(array, TAM);
 }
 
 // Função que lista todos os itens de um array

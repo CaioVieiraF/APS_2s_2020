@@ -104,3 +104,22 @@ void quickSort(int* v, int tam){
 
 }
 
+// Algoritmo de ordenacao selectionSort
+void selectionSort (int* v, int tam){
+    int i, j, k, min;
+    for (i = 0; i < (tam-1); i++){
+        min = i;
+        for(j = (i+1); j < tam; j++){
+            if (v[j] < v[min]){
+                min = j;
+            }
+        }
+        if (i != min){
+            int swap = v[i];
+            v[i] = v[min];
+            v[min] = swap;
+                
+        }
+    }
+}
+
