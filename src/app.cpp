@@ -1,44 +1,44 @@
 
-// Importação das bibliotecas padrão
+// Importa?o das bibliotecas padr?
 #include <iostream>
-#include <ctime>
+#include <chrono>
 #include <fstream>
 #include <vector>
 
-// Importação dos métodos de ordenação implementados em um header
+// Importa?o dos m?odos de ordena?o implementados em um header
 #include "sortingAlgorithms.h"
 
 // Struct que inicia um timer
 struct Timer {
 
-    // Declaração das variaveis usadas nesse escopo para obter os tempos inicial e
-    // final para obter a duração.
-    clock_t start, end;
-    double duration;
+    // Declara?o das variaveis usadas nesse escopo para obter os tempos inicial e
+    // final para obter a dura?o.
+    std::chrono::time_point<std::chrono::high_resolution_clock> start, end;
+    std::chrono::duration<float> duration;
 
-    // Método construtor que pega o tempo atual no momento da declaração de um objeto
+    // M?odo construtor que pega o tempo atual no momento da declara?o de um objeto
     Timer(){
-        start = clock();
+        start = std::chrono::high_resolution_clock::now();
     }
 
-    // Método desconstrutor que pega o tempo atual no momento da "destruição" do objeto,
-    // calcula a duração total da vida do objeto e mostra na tela.
+    // M?odo desconstrutor que pega o tempo atual no momento da "destrui?o" do objeto,
+    // calcula a dura?o total da vida do objeto e mostra na tela.
     ~Timer(){
-        end = clock();
-        duration = ((double)(end - start)) / CLOCKS_PER_SEC;
+        end = std::chrono::high_resolution_clock::now();
+        duration = end - start;
 
-        float ms = duration * 1000.0f;
+        float ms = duration.count() * 1000.0f;
         std::cout << "Timer took " << ms << "ms " << std::endl;
     }
 };
 
-// Protótipo das funções do programa
+// Prot?ipo das fun?es do programa
 
 void printList(int list[], int size);
 
 void teste(std::ifstream &infoDesordFile);
 
-// Protótipos das funções de teste para cada método de ordenação
+// Prot?ipos das fun?es de teste para cada m?odo de ordena?o
 void testeMerge(int *array);
 void testeInsertion(int *array);
 void testeQuick(int *array);
@@ -46,7 +46,7 @@ void testeSelectionSort(int *array);
 
 const int TAM = 100000;
 
-// Método principal
+// M?odo principal
 int main(){
 
     // Teste com lista 100% desordenada:
@@ -65,18 +65,18 @@ int main(){
     // Teste com lista 50% desordenada:
     std::ifstream info50DesordFile("db/arquivo_50.txt");
     std::cout << "Teste com lista 50% desordenada\n";
-    
+
     teste(info50DesordFile);
-    
+
     info50DesordFile.close();
     std::cout << "================================\n";
 
     // Teste com lista 70% desordenada:
     std::ifstream info30DesordFile("db/arquivo_30.txt");
     std::cout << "Teste com lista 70% desordenada\n";
-    
+
     teste(info30DesordFile);
-    
+
     info30DesordFile.close();
     std::cout << "================================\n";
 
@@ -85,9 +85,9 @@ int main(){
 
 void teste(std::ifstream &infoDesordFile){
 
-    // Declaração dos vetores de valores desordenados para
-    // cada método de ordenação. Isso á necessário pois quando
-    // um array está ordenado ele não serve mais para os testes.
+    // Declara?o dos vetores de valores desordenados para
+    // cada m?odo de ordena?o. Isso ?necess?io pois quando
+    // um array est?ordenado ele n? serve mais para os testes.
     int infoDesord_00[TAM], infoDesord_01[TAM], infoDesord_02[TAM], infoDesord_03[TAM];
 
     // Preenchendo os arrays com os valores do arquivo
@@ -110,50 +110,50 @@ void teste(std::ifstream &infoDesordFile){
 
     // teste de tempo do insertion sort.
     testeQuick(infoDesord_02);
-    
+
     // teste de tempo do selection sort.
     testeSelectionSort(infoDesord_03);
 
 }
 
-// Função de teste do merge sort
+// Fun?o de teste do merge sort
 void testeMerge(int *array){
 
     std::cout << "Merge Sort:\n";
-    // Declaração do timer para contar o tempo da função mergeSort
+    // Declara?o do timer para contar o tempo da fun?o mergeSort
     Timer timer;
     mergeSort(array, 0, TAM);
 }
 
-// Função de teste do insertion sort
+// Fun?o de teste do insertion sort
 void testeInsertion(int *array){
 
     std::cout << "Insertion Sort:\n";
-    // Declaração do timer para contar o tempo da função insertionSort
+    // Declara?o do timer para contar o tempo da fun?o insertionSort
     Timer timer;
     insertionSort(array, TAM);
 }
 
-// Função de teste do quick sort
+// Fun?o de teste do quick sort
 void testeQuick(int *array){
 
     std::cout << "Quick Sort:\n";
-    // Declaração do timer para contar o tempo da função testeSort
+    // Declara?o do timer para contar o tempo da fun?o testeSort
     Timer timer;
     quickSort(array, TAM);
 }
 
-// Função de teste do selection sort
+// Fun?o de teste do selection sort
 void testeSelectionSort(int *array){
 
     std::cout << "Selection Sort:\n";
-    // Declaração do timer para contar o tempo da função testeSort
+    // Declara?o do timer para contar o tempo da fun?o testeSort
     Timer timer;
     selectionSort(array, TAM);
 }
 
-// Função que lista todos os itens de um array
-// isso é usado para debug
+// Fun?o que lista todos os itens de um array
+// isso ?usado para debug
 void printList(int list[], int size){
     for (int i = 0; i < size; i++) {
         std::cout << "list[" << i << "] = " << list[i] << std::endl;
