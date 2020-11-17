@@ -3,7 +3,6 @@
 #include <iostream>
 #include <chrono>
 #include <fstream>
-#include <vector>
 
 // Importa?o dos m?odos de ordena?o implementados em um header
 #include "sortingAlgorithms.h"
@@ -11,7 +10,7 @@
 // Struct que inicia um timer
 struct Timer {
 
-    // Declara?o das variaveis usadas nesse escopo para obter os tempos inicial e
+    // Declara?o das variáveis usadas neste escopo para obter os tempos inicial e
     // final para obter a dura?o.
     std::chrono::time_point<std::chrono::high_resolution_clock> start, end;
     std::chrono::duration<float> duration;
@@ -44,6 +43,7 @@ void testeInsertion(int *array);
 void testeQuick(int *array);
 void testeSelectionSort(int *array);
 
+// Constante com a quantidade de dados
 const int TAM = 100000;
 
 // M?odo principal
@@ -72,12 +72,12 @@ int main(){
     std::cout << "================================\n";
 
     // Teste com lista 70% desordenada:
-    std::ifstream info30DesordFile("db/arquivo_30.txt");
+    std::ifstream info70DesordFile("db/arquivo_70.txt");
     std::cout << "Teste com lista 70% desordenada\n";
 
-    teste(info30DesordFile);
+    teste(info70DesordFile);
 
-    info30DesordFile.close();
+    info70DesordFile.close();
     std::cout << "================================\n";
 
     return(0);
